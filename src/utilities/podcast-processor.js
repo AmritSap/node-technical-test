@@ -13,7 +13,33 @@ const podcastProcessor = async sort =>{
             // take out ten episodes from item
             let tenEpisodes =items.slice(0,10);
 
-            return tenEpisodes;
+            const episodesInfo = tenEpisodes.map((item) => {
+              return {
+                title: item.title,
+                audioUrl: item.enclosure.url,
+                publishedDate: item.pubDate,
+              };
+            });
+
+            let sorted = [];
+
+            if (sort === "dsc") {
+              sorted = episodesInfo.sort(
+                (a, b) =>
+                  new Date(b.publishedDate).getTime() -
+                  new Date(a.publishedDate).getTime()
+              );
+            } else if (sort === "asc") {
+              sorted = episodesInfo.sort(
+                (a, b) =>
+                  new Date(a.publishedDate).getTime() -
+                  new Date(b.publishedDate).getTime()
+              );
+            } else {
+              sorted = episodesInfo;
+            }
+            return sorted;
+
         }
     } catch (error) {
         throw new Error(error);
