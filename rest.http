@@ -1,0 +1,10 @@
+### Get podcasts
+GET  http://localhost:3000/
+
+
+### get asc podcast
+GET http://localhost:3000/sort?order=asc
+
+
+### get dsc podcast
+GET http://localhost:3000/sort?order=dsc
