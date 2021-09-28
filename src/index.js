@@ -13,6 +13,13 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/sort", async (req, res) => {
+  try {
+    const { order } = req.query;
+    const result = await podcastProcessor(order);
+    return res.json(result);
+  } catch (error) {
+    throw new Error(error);
+  }
   const { order } = req.query;
   const result = await podcastProcessor(order);
   return res.json(result);

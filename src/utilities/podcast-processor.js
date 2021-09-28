@@ -43,7 +43,7 @@ const podcastProcessor = async (sort) => {
         item.publishedDate = convertISODateToAEST(item.publishedDate);
         return item;
       });
-      return episodes;
+      return {title,description,episodes};
     }
   } catch (error) {
     throw new Error(error);
