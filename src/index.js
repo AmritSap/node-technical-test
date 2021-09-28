@@ -12,6 +12,13 @@ app.get("/", async (req, res) => {
   }
 });
 
+app.get("/sort", async (req, res) => {
+  const { order } = req.query;
+
+  const result = await podcastProcessor(order);
+  return res.json(result);
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })

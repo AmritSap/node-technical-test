@@ -9,7 +9,10 @@ const podcastProcessor = async sort =>{
         // check if rss has got result back if so then we destructure it and take the title description and items
         if(rss){
             const {title,description,items}=rss;
+
+            // take out ten episodes from item
             let tenEpisodes =items.slice(0,10);
+
             return tenEpisodes;
         }
     } catch (error) {
