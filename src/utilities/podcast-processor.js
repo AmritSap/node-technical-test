@@ -5,7 +5,13 @@ const podcastProcessor = async sort =>{
         const rssSource =
           "https://www.nasa.gov/rss/dyn/Houston-We-Have-a-Podcast.rss";
           const rss =await getRSSFeed(rssSource);
-          return rss;
+          
+        // check if rss has got result back if so then we destructure it and take the title description and items
+        if(rss){
+            const {title,description,items}=rss;
+            let tenEpisodes =items.slice(0,10);
+            return tenEpisodes;
+        }
     } catch (error) {
         throw new Error(error);
     }
